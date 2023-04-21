@@ -2,7 +2,7 @@ const fs = require('fs').promises;
 const processes = require('child_process');
 const path = require('path');
 
-const vcpkgPortPath = path.join('vcpkg', 'ports');
+const vcpkgPortPath = path.join(__dirname, 'vcpkg', 'ports');
 
 async function getInstalledSystemPackages() {
     return new Promise((resolve, reject) => {
