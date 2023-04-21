@@ -41,7 +41,7 @@ async function getInstalledSystemPackages() {
 
 async function checkForVcpkgExists(name, version, vcpkgLibraries) {
     try {
-        console.log('trying', name);
+        if(name.indexOf('bzip2') !== -1) console.log('trying', name, path.join(vcpkgPortPath, name));
         await fs.promises.access(path.join(vcpkgPortPath, name));
         vcpkgLibraries.push({
             name: name,
