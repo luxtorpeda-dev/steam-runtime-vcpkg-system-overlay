@@ -75,11 +75,16 @@ function customVcpkgLibraries(vcpkgLibraries) {
         { name: 'libiconv', version: '1.17'},
         { name: 'glib', version: '2.31'}
     ];
-    vcpkgLibraries.push({
-        name: name,
-        version: version
-    });
-    foundPackagesKeys[name] = true;
+
+    for(let lib of libs) {
+        const name = lib.name;
+        const version = lib.version;
+        vcpkgLibraries.push({
+            name: name,
+            version: version
+        });
+        foundPackagesKeys[name] = true;
+    }
 }
 
 async function writePorts(libraries) {
