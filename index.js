@@ -1,6 +1,6 @@
 const fs = require('fs').promises;
 
-async getInstalledSystemPackages() {
+async function getInstalledSystemPackages() {
     return new Promise((resolve, reject) => {
         let result = '';
         let aptList = processes.spawn('apt', ['list', '--installed']);
@@ -22,7 +22,6 @@ async getInstalledSystemPackages() {
         });
     });
 }
-
 
 (async () => {
     try {
