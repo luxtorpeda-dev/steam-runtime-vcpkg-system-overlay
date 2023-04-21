@@ -73,7 +73,9 @@ async function compareAgainstVcpkg(systemPackages) {
 function customVcpkgLibraries(vcpkgLibraries) {
     const libs = [
         { name: 'libiconv', version: '1.17'},
-        { name: 'glib', version: '2.31'}
+        { name: 'glib', version: '2.31'},
+        { name: 'openal-soft', version: '1.19.1'},
+        { name: 'zlib', version: '1.2.11'}
     ];
 
     for(let lib of libs) {
