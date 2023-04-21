@@ -1,4 +1,4 @@
-name: Test Engine
+name: Test Overlays
 
 on:
   pull_request:
