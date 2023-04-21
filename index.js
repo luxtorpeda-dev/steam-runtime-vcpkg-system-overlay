@@ -49,21 +49,17 @@ async function checkForVcpkgExists(name, version, vcpkgLibraries) {
         });
         return true;
     } catch (error) {
-        // The check failed
+        console.error('???', error);
     }
 }
 
 async function compareAgainstVcpkg(systemPackages) {
     const vcpkgLibraries = [];
     for(let systemPackage of systemPackages) {
-        try {
-            if(!await checkForVcpkgExists(systemPackage.name, systemPackage.version, vcpkgLibraries)) {
-                if(!await checkForVcpkgExists(systemPackage.name.split('-dev')[0], systemPackage.version, vcpkgLibraries)) {
-                    await checkForVcpkgExists(systemPackage.name.split('-dev')[0].replace('lib', ''), systemPackage.version, vcpkgLibraries)
-                }
+        if(!await checkForVcpkgExists(systemPackage.name, systemPackage.version, vcpkgLibraries)) {
+            if(!await checkForVcpkgExists(systemPackage.name.split('-dev')[0], systemPackage.version, vcpkgLibraries)) {
+                await checkForVcpkgExists(systemPackage.name.split('-dev')[0].replace('lib', ''), systemPackage.version, vcpkgLibraries)
             }
-        } catch (error) {
-            // The check failed
         }
     }
     return vcpkgLibraries;
