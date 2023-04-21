@@ -3,6 +3,8 @@ const processes = require('child_process');
 const path = require('path');
 
 const vcpkgPortPath = path.join(__dirname, 'vcpkg', 'ports');
+const ignorePackages = ['sdl2-mixer'];
+const foundPackagesKeys = {};
 
 async function getInstalledSystemPackages() {
     return new Promise((resolve, reject) => {
@@ -40,13 +42,16 @@ async function getInstalledSystemPackages() {
 }
 
 async function checkForVcpkgExists(name, version, vcpkgLibraries) {
+    if(ignorePackages.indexOf(name) !== -1) return true;
+    if(foundPackagesKeys[name]) return true;
+
     try {
-        if(name.indexOf('bzip2') !== -1) console.log('trying', name, path.join(vcpkgPortPath, name));
         await fs.access(path.join(vcpkgPortPath, name));
         vcpkgLibraries.push({
             name: name,
             version: version
         });
+        foundPackagesKeys[name] = true;
         return true;
     } catch (error) {}
 }
