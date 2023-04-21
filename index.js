@@ -30,7 +30,7 @@ async function getInstalledSystemPackages() {
             for(let str of stringArr) {
                 if(!str) continue;
                 const packageName = str.split('/')[0];
-                const version = str.split('now ')[1].split(' ')[0].split('~')[0];
+                const version = str.split('now ')[1].split(' ')[0].split('~')[0].split('+');
                 const data = {
                     name: packageName,
                     version: version
