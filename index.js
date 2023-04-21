@@ -8,7 +8,7 @@ async function getInstalledSystemPackages() {
         aptList.stdout.once('error', reject);
         aptList.stdout.on('data', (chunk) => {
             const chunkStr = chunk.toString();
-            if(chunkStr.indexOf('Listing...') === -1) {
+            if(chunkStr.indexOf('Listing...') === -1 && chunkStr) {
                 result += chunkStr;
             }
         });
