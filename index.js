@@ -47,7 +47,7 @@ async function compareAgainstVcpkg(systemPackages) {
             vcpkgLibraries.push({
                 name: systemPackage.name,
                 version: systemPackage.version
-            )};
+            });
         } catch (error) {
             // The check failed
         }
