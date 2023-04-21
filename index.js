@@ -7,7 +7,10 @@ async function getInstalledSystemPackages() {
         let aptList = processes.spawn('apt', ['list', '--installed']);
         aptList.stdout.once('error', reject);
         aptList.stdout.on('data', (chunk) => {
-                result += chunk.toString();
+            const chunkStr = chunk.toString();
+            if(chunkStr.indexOf('Listing...') === -1) {
+                result += chunkStr;
+            }
         });
         aptList.stdout.once('end', () => {
             if (!result) {
@@ -17,7 +20,15 @@ async function getInstalledSystemPackages() {
             const stringArr = result.split('\n');
             const packages = [];
 
-            console.log("ASDASD213", stringArr);
+            for(let str of stringArr) {
+                const packageName = str.split('/')[0];
+                const version = str.split('/stable,stable,now ')[1].split(' ')[0];
+                const data = {
+                    package: packageName,
+                    version: version
+                };
+                packages.push(data);
+            }
 
             return resolve(packages);
         });
@@ -27,6 +38,7 @@ async function getInstalledSystemPackages() {
 (async () => {
     try {
         const packages = await getInstalledSystemPackages();
+        console.info('packages', packages);
     } catch (e) {
         console.error(`top level exception: ${e.toString()}`);
     }
