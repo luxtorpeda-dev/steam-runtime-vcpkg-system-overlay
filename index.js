@@ -108,7 +108,6 @@ async function writePorts(libraries) {
         const vcpkgLibraries = await compareAgainstVcpkg(packages);
         customVcpkgLibraries(vcpkgLibraries);
         console.info('vcpkgLibraries', vcpkgLibraries);
-
         await writePorts(vcpkgLibraries);
     } catch (e) {
         console.error(`top level exception: ${e.toString()}`);
