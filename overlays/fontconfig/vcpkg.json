@@ -1,4 +1,8 @@
 {
     "name": "fontconfig",
-    "version": "2.13.1-4.2+steamrt3.1+bsrt3.1"
+    "version": [
+        "2.13.1-4.2",
+        "steamrt3.1",
+        "bsrt3.1"
+    ]
 }
