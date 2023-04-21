@@ -73,7 +73,7 @@ async function compareAgainstVcpkg(systemPackages) {
 async function writePorts(libraries) {
     try {
         fsSync.rmSync(overlaysPath, { recursive: true });
-    } catch() {}
+    } catch(err) {}
     fsSync.mkdirSync(overlaysPath);
 
     for(let library of libraries) {
