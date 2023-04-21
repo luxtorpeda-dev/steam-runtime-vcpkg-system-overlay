@@ -1,7 +1,4 @@
 {
     "name": "ncurses",
-    "version": [
-        "6.2",
-        "20201114-2"
-    ]
+    "version": "6.2"
 }

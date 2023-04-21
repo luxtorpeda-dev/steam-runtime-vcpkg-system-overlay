@@ -1,8 +1,4 @@
 {
     "name": "freetype",
-    "version": [
-        "2.10.4",
-        "dfsg-1",
-        "deb11u1"
-    ]
+    "version": "2.10.4"
 }

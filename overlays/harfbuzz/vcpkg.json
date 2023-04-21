@@ -1,6 +1,4 @@
 {
     "name": "harfbuzz",
-    "version": [
-        "2.7.4-1"
-    ]
+    "version": "2.7.4-1"
 }

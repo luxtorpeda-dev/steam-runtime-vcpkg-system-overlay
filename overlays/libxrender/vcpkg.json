@@ -1,6 +1,4 @@
 {
     "name": "libxrender",
-    "version": [
-        "1:0.9.10-1"
-    ]
+    "version": "1:0.9.10-1"
 }

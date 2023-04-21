@@ -1,7 +1,4 @@
 {
     "name": "libmount",
-    "version": [
-        "2.36.1-8",
-        "deb11u1"
-    ]
+    "version": "2.36.1-8"
 }

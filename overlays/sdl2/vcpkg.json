@@ -1,9 +1,4 @@
 {
     "name": "sdl2",
-    "version": [
-        "2.26.4",
-        "dfsg-1",
-        "steamrt3.1",
-        "bsrt3.1"
-    ]
+    "version": "2.26.4"
 }
