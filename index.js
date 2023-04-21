@@ -70,7 +70,7 @@ async function compareAgainstVcpkg(systemPackages) {
     return vcpkgLibraries;
 }
 
-function customVcpkgLibraries() {
+function customVcpkgLibraries(vcpkgLibraries) {
     const libs = [
         { name: 'libiconv', version: '1.17'},
         { name: 'glib', version: '2.31'}
@@ -101,7 +101,7 @@ async function writePorts(libraries) {
     try {
         const packages = await getInstalledSystemPackages();
         const vcpkgLibraries = await compareAgainstVcpkg(packages);
-        customVcpkgLibraries();
+        customVcpkgLibraries(vcpkgLibraries);
         console.info('vcpkgLibraries', vcpkgLibraries);
 
         await writePorts(vcpkgLibraries);
