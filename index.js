@@ -43,7 +43,7 @@ async function compareAgainstVcpkg(systemPackages) {
     const vcpkgLibraries = [];
     for(let systemPackage of systemPackages) {
         try {
-            await fs.promises.access(path.join(vcpkgPortPath, systemPackage.name);
+            await fs.promises.access(path.join(vcpkgPortPath, systemPackage.name));
             vcpkgLibraries.push({
                 name: systemPackage.name,
                 version: systemPackage.version
