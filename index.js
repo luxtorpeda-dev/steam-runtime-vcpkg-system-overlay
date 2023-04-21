@@ -77,7 +77,7 @@ async function writePorts(libraries) {
     fsSync.mkdirSync(overlaysPath);
 
     for(let library of libraries) {
-        const libraryPath = path.join(overlaysPath, library);
+        const libraryPath = path.join(overlaysPath, library.name);
         fsSync.mkdirSync(libraryPath);
 
         await fs.writeFile(path.join(overlaysPath, 'portfile.cmake'), 'set(VCPKG_POLICY_EMPTY_PACKAGE enabled)');
