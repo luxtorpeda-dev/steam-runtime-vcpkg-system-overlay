@@ -1,8 +1,10 @@
 const fs = require('fs').promises;
+const fsSync = require('fs');
 const processes = require('child_process');
 const path = require('path');
 
 const vcpkgPortPath = path.join(__dirname, 'vcpkg', 'ports');
+const overlaysPath = path.join(__dirname, 'overlays');
 const ignorePackages = ['sdl2-mixer'];
 const foundPackagesKeys = {};
 
@@ -68,11 +70,28 @@ async function compareAgainstVcpkg(systemPackages) {
     return vcpkgLibraries;
 }
 
+async function writePorts(libraries) {
+    try {
+        fsSync.rmSync(overlaysPath, { recursive: true });
+    } catch() {}
+    fsSync.mkdirSync(overlaysPath);
+
+    for(let library of libraries) {
+        const libraryPath = path.join(overlaysPath, library);
+        fsSync.mkdirSync(libraryPath);
+
+        await fs.writeFile(path.join(overlaysPath, 'portfile.cmake'), 'set(VCPKG_POLICY_EMPTY_PACKAGE enabled)');
+        await fs.writeFile(path.join(overlaysPath, 'vcpkg.json'), JSON.stringify(library, null, 4);
+    }
+}
+
 (async () => {
     try {
         const packages = await getInstalledSystemPackages();
         const vcpkgLibraries = await compareAgainstVcpkg(packages);
-        console.log('vcpkgLibraries', vcpkgLibraries);
+        console.info('vcpkgLibraries', vcpkgLibraries);
+
+        await writePorts(vcpkgLibraries);
     } catch (e) {
         console.error(`top level exception: ${e.toString()}`);
     }
