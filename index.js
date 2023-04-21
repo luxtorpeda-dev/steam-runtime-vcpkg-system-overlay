@@ -22,6 +22,7 @@ async function getInstalledSystemPackages() {
 
             for(let str of stringArr) {
                 const packageName = str.split('/')[0];
+                console.log("ASDASd123", str.split('now ')[1]);
                 const version = str.split('now ')[1].split(' ')[0];
                 const data = {
                     package: packageName,
