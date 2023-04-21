@@ -17,10 +17,12 @@ jobs:
       uses: actions/checkout@v3
       with:
         ref: main
+        fetch-depth: 1
     - name: Build
       run: ./start.sh
     - name: Commit overlays
       run: |
+        git config --global --add safe.directory "$GITHUB_WORKSPACE"
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git add -A overlays

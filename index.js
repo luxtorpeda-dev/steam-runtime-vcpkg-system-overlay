@@ -107,7 +107,6 @@ async function writePorts(libraries) {
         const packages = await getInstalledSystemPackages();
         const vcpkgLibraries = await compareAgainstVcpkg(packages);
         customVcpkgLibraries(vcpkgLibraries);
-
         console.info('vcpkgLibraries', vcpkgLibraries);
         await writePorts(vcpkgLibraries);
     } catch (e) {
