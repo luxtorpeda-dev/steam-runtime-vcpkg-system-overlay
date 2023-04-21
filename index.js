@@ -42,15 +42,13 @@ async function getInstalledSystemPackages() {
 async function checkForVcpkgExists(name, version, vcpkgLibraries) {
     try {
         if(name.indexOf('bzip2') !== -1) console.log('trying', name, path.join(vcpkgPortPath, name));
-        await fs.promises.access(path.join(vcpkgPortPath, name));
+        await fs.access(path.join(vcpkgPortPath, name));
         vcpkgLibraries.push({
             name: name,
             version: version
         });
         return true;
-    } catch (error) {
-        console.error('???', error);
-    }
+    } catch (error) {}
 }
 
 async function compareAgainstVcpkg(systemPackages) {
