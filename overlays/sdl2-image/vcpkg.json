@@ -1,4 +1,7 @@
 {
     "name": "sdl2-image",
-    "version": "2.6.3+dfsg-1"
+    "version": [
+        "2.6.3",
+        "dfsg-1"
+    ]
 }

@@ -1,4 +1,7 @@
 {
     "name": "sdl2-ttf",
-    "version": "2.20.1+dfsg-1"
+    "version": [
+        "2.20.1",
+        "dfsg-1"
+    ]
 }

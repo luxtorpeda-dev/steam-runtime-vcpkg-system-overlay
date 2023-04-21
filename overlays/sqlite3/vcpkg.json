@@ -1,4 +1,6 @@
 {
     "name": "sqlite3",
-    "version": "3.34.1-3"
+    "version": [
+        "3.34.1-3"
+    ]
 }

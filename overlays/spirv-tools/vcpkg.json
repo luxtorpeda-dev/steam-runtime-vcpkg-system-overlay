@@ -1,4 +1,6 @@
 {
     "name": "spirv-tools",
-    "version": "2023.1-2"
+    "version": [
+        "2023.1-2"
+    ]
 }

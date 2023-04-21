@@ -1,4 +1,6 @@
 {
     "name": "wayland",
-    "version": "1.18.0-2"
+    "version": [
+        "1.18.0-2"
+    ]
 }
