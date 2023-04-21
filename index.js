@@ -8,7 +8,7 @@ async function getInstalledSystemPackages() {
         aptList.stdout.once('error', reject);
         aptList.stdout.on('data', (chunk) => {
             const chunkStr = chunk.toString();
-            if(chunkStr.indexOf('Listing...') === -1 && chunkStr) {
+            if(chunkStr.indexOf('Listing...') === -1) {
                 result += chunkStr;
             }
         });
@@ -21,6 +21,7 @@ async function getInstalledSystemPackages() {
             const packages = [];
 
             for(let str of stringArr) {
+                if(!str) continue;
                 const packageName = str.split('/')[0];
                 console.log("ASDASd123", str);
                 const version = str.split('now ')[1].split(' ')[0];
