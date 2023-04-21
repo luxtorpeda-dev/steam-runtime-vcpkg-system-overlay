@@ -25,7 +25,7 @@ async function getInstalledSystemPackages() {
 
 (async () => {
     try {
-
+        const packages = await getInstalledSystemPackages();
     } catch (e) {
         console.error(`top level exception: ${e.toString()}`);
     }
