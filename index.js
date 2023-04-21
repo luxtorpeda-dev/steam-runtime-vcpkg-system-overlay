@@ -63,11 +63,23 @@ async function compareAgainstVcpkg(systemPackages) {
     for(let systemPackage of systemPackages) {
         if(!await checkForVcpkgExists(systemPackage.name, systemPackage.version, vcpkgLibraries)) {
             if(!await checkForVcpkgExists(systemPackage.name.split('-dev')[0], systemPackage.version, vcpkgLibraries)) {
-                await checkForVcpkgExists(systemPackage.name.split('-dev')[0].replace('lib', ''), systemPackage.version, vcpkgLibraries)
+                if(!await checkForVcpkgExists(systemPackage.name.split('-dev')[0].replace('lib', ''), systemPackage.version, vcpkgLibraries)) {}
             }
         }
     }
     return vcpkgLibraries;
+}
+
+function customVcpkgLibraries() {
+    const libs = [
+        { name: 'libiconv', version: '1.17'},
+        { name: 'glib', version: '2.31'}
+    ];
+    vcpkgLibraries.push({
+        name: name,
+        version: version
+    });
+    foundPackagesKeys[name] = true;
 }
 
 async function writePorts(libraries) {
@@ -89,6 +101,7 @@ async function writePorts(libraries) {
     try {
         const packages = await getInstalledSystemPackages();
         const vcpkgLibraries = await compareAgainstVcpkg(packages);
+        customVcpkgLibraries();
         console.info('vcpkgLibraries', vcpkgLibraries);
 
         await writePorts(vcpkgLibraries);
