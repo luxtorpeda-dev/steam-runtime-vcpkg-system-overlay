@@ -74,7 +74,8 @@ function customVcpkgLibraries(vcpkgLibraries) {
     const libs = [
         { name: 'libiconv', version: '1.17'},
         { name: 'glib', version: '2.31'},
-        { name: 'zlib', version: '1.2.11'}
+        { name: 'zlib', version: '1.2.11'},
+        { name: 'alsa', version: '1.2.4'}
     ];
 
     for(let lib of libs) {
