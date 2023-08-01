@@ -96,6 +96,9 @@ async function writePorts(libraries) {
     fsSync.mkdirSync(overlaysPath);
 
     for(let library of libraries) {
+        if(library.name === 'openssl') {
+            library.version = '1.1.1';
+        }
         const libraryPath = path.join(overlaysPath, library.name);
         fsSync.mkdirSync(libraryPath);
 
