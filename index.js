@@ -5,7 +5,7 @@ const path = require('path');
 
 const vcpkgPortPath = path.join(__dirname, 'vcpkg', 'ports');
 const overlaysPath = path.join(__dirname, 'overlays');
-const ignorePackages = ['sdl2-mixer', 'libvorbis', 'libogg', 'bzip2', 'libpng', 'zlib'];
+const ignorePackages = ['sdl2-mixer', 'libvorbis', 'libogg'];
 const foundPackagesKeys = {};
 
 async function getInstalledSystemPackages() {
