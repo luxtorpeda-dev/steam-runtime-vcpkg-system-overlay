@@ -5,7 +5,7 @@ const path = require('path');
 
 const vcpkgPortPath = path.join(__dirname, 'vcpkg', 'ports');
 const overlaysPath = path.join(__dirname, 'overlays');
-const ignorePackages = ['sdl2-mixer', 'libvorbis', 'libogg', 'gettext', 'glib'];
+const ignorePackages = ['sdl2-mixer', 'libvorbis', 'libogg', 'gettext'];
 const foundPackagesKeys = {};
 
 async function getInstalledSystemPackages() {
@@ -73,7 +73,6 @@ async function compareAgainstVcpkg(systemPackages) {
 function customVcpkgLibraries(vcpkgLibraries) {
     const libs = [
         { name: 'libiconv', version: '1.17'},
-        { name: 'glib', version: '2.31'},
         { name: 'zlib', version: '1.2.11'},
         { name: 'alsa', version: '1.2.4'}
     ];
