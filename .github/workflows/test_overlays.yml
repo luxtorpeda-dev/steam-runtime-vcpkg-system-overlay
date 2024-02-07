@@ -13,6 +13,6 @@ jobs:
     container: registry.gitlab.steamos.cloud/steamrt/sniper/sdk:0.20230405.47175
     steps:
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
     - name: Build
       run: ./start.sh
