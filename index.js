@@ -58,6 +58,7 @@ async function checkForVcpkgExists(name, version, vcpkgLibraries) {
     } catch (error) {}
 }
 
+
 async function compareAgainstVcpkg(systemPackages) {
     const vcpkgLibraries = [];
     for(let systemPackage of systemPackages) {
